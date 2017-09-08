@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.sxm.example.quotetextview.MainActivity">
+
+    <com.sxm.example.quotetextview.QuoteTextView
+        android:id="@+id/quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingTop="13.5dp"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        tools:text="这是一间营业时间从午夜十二点到早上七点的特殊食堂这" />
+    <com.sxm.example.quotetextview.QuoteTextView
+        android:id="@+id/quote2"
+        android:layout_below="@+id/quote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="20dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:paddingTop="13.5dp"
+        android:textSize="16sp"
+        tools:text="这是一间营业时间从午夜十二点到早上七点的特殊食堂这" />
+</RelativeLayout>
