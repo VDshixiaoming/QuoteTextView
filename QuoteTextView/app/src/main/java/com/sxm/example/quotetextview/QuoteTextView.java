@@ -22,10 +22,11 @@ import java.util.List;
  */
 
 public class QuoteTextView extends TextView {
-    private String imgLeft = "rating_star";
-    private String imgRight = "rating_star_gray";
+    private String imgLeft = "rating_star";//文本左边图片资源名，img01
+    private String imgRight = "rating_star_gray";//文本右边图片资源名
 
-    private static final String ELLIPSIS = "...";
+    private String ELLIPSIS = "...";//自定义省略符号
+    private int placeholderCount = 3;//图片及省略号占位
 
     public interface EllipsizeListener {
         void ellipsizeStateChanged(boolean ellipsized);
@@ -116,9 +117,11 @@ public class QuoteTextView extends TextView {
         setMovementMethod(LinkMovementMethod.getInstance());
 //        setTextColor(getResources().getColor(android.R.color.w));
     }
-    public void setQuoteTextView(String text, String imgLeft, String imgRight){
-        this.imgLeft = imgLeft;
-        this.imgRight = imgRight;
+    public void setQuoteTextView(String text, String imgLeft, String imgRight, String ellipse, int count){
+        this.imgLeft = imgLeft;//文本左边图片资源名，img01
+        this.imgRight = imgRight;//文本右边图片资源名
+        this.ELLIPSIS = ellipse;//自定义省略符号
+        this.placeholderCount = count;//图片及省略号占位
         super.setText(text);
     }
 
@@ -133,7 +136,7 @@ public class QuoteTextView extends TextView {
             Layout layout = createWorkingLayout(workingText);
             if (layout.getLineCount() > maxLines) {
                 workingText = fullText.substring(0, layout.getLineEnd(maxLines - 1)).trim();
-                workingText = workingText.substring(0, workingText.length() - 2) + ELLIPSIS;
+                workingText = workingText.substring(0, workingText.length() - placeholderCount) + ELLIPSIS;
                 ellipsized = true;
             }
         }

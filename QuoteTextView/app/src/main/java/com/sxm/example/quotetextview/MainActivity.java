@@ -16,10 +16,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void initView(){
         mText = (QuoteTextView) findViewById(R.id.quote);
-        mText.setText("这是一间营业时间从午夜十二点到早上七点的特殊食堂这");
+        mText.setText("这是一间营业时间从午夜十二点到早上七点的特殊食堂这这是一间营业这这是一间营业时间从午夜十二点到早上七点的特殊食堂这");
 
         mText2 = (QuoteTextView) findViewById(R.id.quote2);
-        mText2.setQuoteTextView("这是一间营业时间从午夜十二点到早上七点的特殊食堂这这是一间营业这这是一间营业时间从午夜十二点到早上七点的特殊食堂这","","rating_star");
+        mText2.setQuoteTextView("这是一间营业时间从午夜十二点到早上七点的特殊食堂这这是一间营业这这是一间营业时间从午夜十二点到早上七点的特殊食堂这","","rating_star","***",2);
 
     }
 }
