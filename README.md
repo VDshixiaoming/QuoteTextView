@@ -1,7 +1,7 @@
 # QuoteTextView
 实现效果如下：   
 
-![实现效果：](https://github.com/VDshixiaoming/QuoteTextView/raw/master/QuoteTextView/screenshot.png)  
+![实现效果：](https://github.com/VDshixiaoming/QuoteTextView/raw/master/QuoteTextView/screenshot2.png)  
 
 图文混排效果，自定义省略符号
 # 使用方法
