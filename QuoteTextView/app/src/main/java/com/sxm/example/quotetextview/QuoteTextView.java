@@ -36,7 +36,7 @@ public class QuoteTextView extends TextView {
     private boolean isEllipsized;
     private boolean isStale = true;
     private boolean programmaticChange;
-    private String fullText;
+    private String fullText;//原始文本
     private float lineSpacingMultiplier = 1.0f;
     private float lineAdditionalVerticalPadding = 0.0f;
 
@@ -93,15 +93,15 @@ public class QuoteTextView extends TextView {
     protected void onTextChanged(CharSequence text, int start, int before, int after) {
         super.onTextChanged(text, start, before, after);
         if (!programmaticChange) {
-            fullText = text.toString();
+            fullText = text.toString();//拿到原始文本
             isStale = true;
         }
     }
     @Override
     protected void onDraw(Canvas canvas) {
         if (isStale) {
-            super.setEllipsize(null);
-            resetText();
+            super.setEllipsize(null);//避免重复绘制
+            resetText();//自定义省略
         }
         super.onDraw(canvas);
     }
