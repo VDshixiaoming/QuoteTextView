@@ -22,11 +22,11 @@ import java.util.List;
  */
 
 public class QuoteTextView extends TextView {
-    private String imgLeft = "rating_star";//文本左边图片资源名，img01
-    private String imgRight = "rating_star_gray";//文本右边图片资源名
+    private String leftHtml = "";//文本左边html
+    private String rightHtml = "";//文本右边html
 
     private String ELLIPSIS = "...";//自定义省略符号
-    private int placeholderCount = 3;//图片及省略号占位
+    private int placeholderCount = 1;//图片及省略号占位
 
     public interface EllipsizeListener {
         void ellipsizeStateChanged(boolean ellipsized);
@@ -118,12 +118,16 @@ public class QuoteTextView extends TextView {
 //        setTextColor(getResources().getColor(android.R.color.w));
     }
     public void setQuoteTextView(String text, String imgLeft, String imgRight, String ellipse, int count){
-        this.imgLeft = imgLeft;//文本左边图片资源名，img01
-        this.imgRight = imgRight;//文本右边图片资源名
+        this.leftHtml = imgLeft;//文本左边图片资源名，img01
+        this.rightHtml = imgRight;//文本右边图片资源名
         this.ELLIPSIS = ellipse;//自定义省略符号
         this.placeholderCount = count;//图片及省略号占位
         super.setText(text);
     }
+    public void setQuoteTextView(String text, String imgRight, int count){
+        setQuoteTextView(text,"",imgRight, "",count);
+    }
+
 
     private void resetText() {
         if(TextUtils.isEmpty(fullText)){
@@ -159,7 +163,7 @@ public class QuoteTextView extends TextView {
         }
     }
     private String toHtml(String text){
-        return getHtmlImg(imgLeft) + text + getHtmlImg(imgRight);
+        return leftHtml + text + rightHtml;
     }
     private String getHtmlImg(String src){
         if(TextUtil.isEmpty(src)){
