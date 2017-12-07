@@ -3,7 +3,8 @@
 
 ![实现效果：](https://github.com/VDshixiaoming/QuoteTextView/raw/master/QuoteTextView/screenshot3.png)  
 
-图文混排效果，自定义省略符号
+[原理：](http://blog.csdn.net/wanmeilang123/article/details/77898666)
+图文混排效果，自定义省略符号，图片文字水平对齐
 # 使用方法
 ``` java
 setText(String text);
