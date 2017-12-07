@@ -3,13 +3,17 @@ package com.sxm.example.quotetextview;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.widget.TextViewCompat;
 import android.text.Html;
 import android.text.Layout;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
 import android.text.StaticLayout;
 import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
+import android.text.style.ImageSpan;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
@@ -111,7 +115,20 @@ public class QuoteTextView extends TextView {
         imgGetter = new LocalImageGetter(getContext());
 
         // this uses Android's Html class for basic parsing, and HtmlTagHandler
-        setText(Html.fromHtml(html, imgGetter, new HtmlTagHandler()));
+//        setText(Html.fromHtml(html, imgGetter, new HtmlTagHandler()));
+        Spanned spanned = Html.fromHtml(html, imgGetter, null);
+        if(spanned instanceof SpannableStringBuilder){
+            ImageSpan[] imageSpans = spanned.getSpans(0, spanned.length(), ImageSpan.class);
+            for(ImageSpan imageSpan : imageSpans){
+                int start = spanned.getSpanStart(imageSpan);
+                int end = spanned.getSpanEnd(imageSpan);
+                Drawable d = imageSpan.getDrawable();
+                AlignTextSpan newImageSpan = new AlignTextSpan(d, ImageSpan.ALIGN_BASELINE);
+                ((SpannableStringBuilder) spanned).setSpan(newImageSpan, start, end, Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
+                ((SpannableStringBuilder) spanned).removeSpan(imageSpan);
+            }
+        }
+        setText(spanned, BufferType.SPANNABLE);
 
         // make links work
         setMovementMethod(LinkMovementMethod.getInstance());
